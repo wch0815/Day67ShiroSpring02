@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 整个映射文件为mapper节点，里面包含namespace属性 -->
+<mapper namespace="com.cheng.pojo.RoleMapper">
+	
+	<select id="getRoleByUsername" resultType="string">
+		select r.rname
+			from tb_role r,
+			tb_user u,
+			tb_user_role ur
+			where r.rid = ur.rid
+			and u.uid= ur.uid
+			and u.username = #{username};
+	</select>
+</mapper>
